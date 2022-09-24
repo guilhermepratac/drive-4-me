@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Uber",
-    "slug": "react-uber",
+    "name": "drive-4-me",
+    "slug": "drive-4-me",
     "privacy": "public",
     "platforms": [
       "ios",
