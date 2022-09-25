@@ -20,10 +20,8 @@ function ChooseRide() {
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
-  const selectAdress = (id) => {
-    console.log("aloo3")
+  const selectAdress = (id: string) => {
     const adress = RecentRides.filter(e => e.id === id)[0]
-    console.log("aloo1")
 
     dispatch(
       setDestination({

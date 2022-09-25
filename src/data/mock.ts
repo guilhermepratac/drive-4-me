@@ -2,10 +2,25 @@ export type CarsClassesType = typeof CarsClasses[0];
 
 export const CarsClasses = [
   {
-    id: 'UberX-123',
-    title: 'Motorista',
+    id: 'scotter-1',
+    title: 'Eduardo',
+    time:"10 minutos de você",
     multiplier: 1,
-    image: require('../../assets/images/cars/UberX.webp'),
+    image: require('../../assets/images/cars/lime-scooter.webp'),
+  },
+  {
+    id: 'scotter-2',
+    title: 'Marco',
+    time:"14 minutos de você",
+    multiplier: 1,
+    image: require('../../assets/images/cars/lime-scooter.webp'),
+  },
+  {
+    id: 'scotter-3',
+    title: 'Gustavo',
+    time:"10 minutos de você",
+    multiplier: 1,
+    image: require('../../assets/images/cars/lime-scooter.webp'),
   },
 ];
 

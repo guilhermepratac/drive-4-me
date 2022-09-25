@@ -39,7 +39,7 @@ function RideType() {
             onPress={() => navigation.navigate('ChooseRide')}
           />
         </TouchableOpacity>
-        <Text style={tailwind`text-lg font-bold`}>Select a Ride</Text>
+        <Text style={tailwind`text-lg font-bold`}>Selecione seu motorista</Text>
       </View>
       <FlatList
         style={tailwind`mb-10`}
@@ -64,7 +64,10 @@ function RideType() {
               <View>
                 <Text style={tailwind`text-lg font-medium`}>{item.title}</Text>
                 <Text style={tailwind`text-sm text-gray-500`}>
-                  {travelTime?.duration.text}
+                  {item.time}
+                </Text>
+                <Text style={tailwind`text-sm text-gray-500`}>
+                  Tempo de viagem: {travelTime?.duration.text}
                 </Text>
               </View>
             </View>
@@ -82,11 +85,12 @@ function RideType() {
       <TouchableOpacity
         style={tailwind`absolute bottom-6 left-5 w-[90%] h-14
          m-auto rounded-full bg-black`}
+         onPress={() => navigation.navigate('AcceptRide')}
       >
         <Text
           style={tailwind`text-lg  font-medium text-white text-center p-3 px-5`}
         >
-          Choose {selected?.title}
+          Escolha {selected?.title}
         </Text>
       </TouchableOpacity>
     </SafeAreaView>

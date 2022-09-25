@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { MAPS_API_KEY } from 'react-native-dotenv';
 import MapView, { Marker } from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Location from 'expo-location';
-import { ActivityIndicator } from "react-native";
+import tailwind from 'twrnc';
+import { Icon } from 'react-native-elements';
 
 import LocationContext from '../../context/Location/LocationContext';
 
@@ -74,49 +75,60 @@ function Map() {
 
   if (origin) {
     return (
-      <MapView
-        ref={mapRef}
-        style={styles.map}
-        mapType="mutedStandard"
-        initialRegion={{
-          latitude: origin.location.lat,
-          longitude: origin.location.lng,
-          latitudeDelta: 0.001,
-          longitudeDelta: 0.001,
-        }}
-      >
-        {origin && destination && (
-          <MapViewDirections
-            origin={adressOrigin}
-            destination={destination.description}
-            strokeColor="black"
-            strokeWidth={3}
-            apikey={MAPS_API_KEY}
+      <View style={styles.containerMap}>
+        <TouchableOpacity style={styles.floatinBtn}>
+          <Icon
+            name="arrow-left"
+            type="feather"
+            color="black"
+            size={30}
+            tvParallaxProperties={undefined}
           />
-        )}
+        </TouchableOpacity>
+        <MapView
+          ref={mapRef}
+          style={styles.map}
+          mapType="mutedStandard"
+          initialRegion={{
+            latitude: origin.location.lat,
+            longitude: origin.location.lng,
+            latitudeDelta: 0.001,
+            longitudeDelta: 0.001,
+          }}
+        >
+          {origin && destination && (
+            <MapViewDirections
+              origin={adressOrigin}
+              destination={destination.description}
+              strokeColor="black"
+              strokeWidth={3}
+              apikey={MAPS_API_KEY}
+            />
+          )}
 
-        {origin?.location && (
-          <Marker
-            title={origin.description}
-            coordinate={{
-              latitude: origin.location.lat,
-              longitude: origin.location.lng,
-            }}
-            identifier="origin"
-          />
-        )}
+          {origin?.location && (
+            <Marker
+              title={origin.description}
+              coordinate={{
+                latitude: origin.location.lat,
+                longitude: origin.location.lng,
+              }}
+              identifier="origin"
+            />
+          )}
 
-        {destination?.location && (
-          <Marker
-            title={destination.description}
-            coordinate={{
-              latitude: destination.location.lat,
-              longitude: destination.location.lng,
-            }}
-            identifier="destination"
-          />
-        )}
-      </MapView>
+          {destination?.location && (
+            <Marker
+              title={destination.description}
+              coordinate={{
+                latitude: destination.location.lat,
+                longitude: destination.location.lng,
+              }}
+              identifier="destination"
+            />
+          )}
+        </MapView>
+      </View>
     );
   }
 
@@ -130,7 +142,8 @@ function Map() {
 
 const styles = StyleSheet.create({
   map: {
-    flex: 1,
+    height:"100%",
+    width:"100%",
   },
   container: {
     flex: 1,
@@ -145,6 +158,19 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 24,
     fontWeight: "bold"
+  },
+  containerMap: {
+    flex: 2,
+    height:"100%",
+    width:"100%",
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  floatinBtn: { 
+    flex: 1,
+    position: 'absolute',
+    top: 60,
+    left: 10,
   }
 });
 

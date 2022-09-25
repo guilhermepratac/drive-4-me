@@ -5,10 +5,12 @@ import tailwind from 'twrnc';
 
 import ChooseRide from './ChooseRide';
 import RideType from './RideType';
+import AcceptRide from './AcceptRide';
 
 export type RideStackParamList = {
   ChooseRide: undefined;
   ChooseRideType: undefined;
+  AcceptRide: undefined;
 };
 
 function Ride() {
@@ -27,6 +29,13 @@ function Ride() {
         <RideStack.Screen
           name="ChooseRideType"
           component={RideType}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <RideStack.Screen
+          name="AcceptRide"
+          component={AcceptRide}
           options={{
             headerShown: false,
           }}
