@@ -16,10 +16,20 @@ export const RecentRides = [
     id: '1',
     title: 'Casa',
     address: 'R. João Caetano, 136 - Encruzilhada, Santos - SP, 11070-311',
+    description: 'R. João Caetano, 136 - Encruzilhada, Santos - SP, 11070-311',
+    location: {
+      lat: -23.961290,
+      lng:  -46.347370,
+    },
   },
   {
     id: '2',
     title: 'Faculdade',
     address: 'R. Oswaldo Cruz, 277 - Boqueirão, Santos - SP, 11045-907',
+    description: 'R. Oswaldo Cruz, 277 - Boqueirão, Santos - SP, 11045-907',
+    location: {
+      lat: -23.964579,
+      lng:  -46.321762,
+    },
   },
 ];

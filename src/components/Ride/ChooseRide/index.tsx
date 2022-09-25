@@ -11,18 +11,37 @@ import {
 import { Icon } from 'react-native-elements';
 import tailwind from 'twrnc';
 import { RecentRides } from '../../../data/mock';
+import { setDestination } from '../../../redux/slices/navSlice';
+import { useDispatch } from 'react-redux';
 
 import SearchInputAutocomplete from '../../SearchInputAutocomplete';
 
 function ChooseRide() {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+
+  const selectAdress = (id) => {
+    console.log("aloo3")
+    const adress = RecentRides.filter(e => e.id === id)[0]
+    console.log("aloo1")
+
+    dispatch(
+      setDestination({
+        ...adress
+      })
+    );
+
+    navigation.navigate('ChooseRideType');
+
+  }
+
   return (
     <View style={tailwind`flex-1 bg-white p-5`}>
       <View
         style={tailwind`flex self-center w-7 h-1 bg-gray-200 rounded-full`}
       />
       <Text style={tailwind`text-center py-3 text-xl font-bold`}>
-        Good Morning, Rafo!
+        Bora descansar, Guilherme ?
       </Text>
       <View>
         <KeyboardAvoidingView
@@ -32,7 +51,7 @@ function ChooseRide() {
         >
           <SearchInputAutocomplete
             iconName="search"
-            placeholder="Where to?"
+            placeholder="Para onde?"
             type="destination"
           />
         </KeyboardAvoidingView>
@@ -42,7 +61,7 @@ function ChooseRide() {
           data={RecentRides}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
-            <TouchableOpacity style={tailwind`flex flex-row items-center mt-2`}>
+            <TouchableOpacity style={tailwind`flex flex-row items-center mt-2`} onPress={() => selectAdress(item.id)}>
               <View style={tailwind`-ml-3`}>
                 <Icon
                   name="clock"

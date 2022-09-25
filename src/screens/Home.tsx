@@ -33,8 +33,8 @@ const Home = () => {
             <NavOptions />
             <SearchInputAutocomplete
               iconName="search"
-              placeholder="Where to?"
-              type="origin"
+              placeholder="Para onde"
+              type="destination"
             />
           </View>
         </KeyboardAvoidingView>

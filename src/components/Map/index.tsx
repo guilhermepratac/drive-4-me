@@ -24,7 +24,7 @@ function Map() {
   const [adressOrigin, setAdressOrigin] = useState<string>("");
 
   const dispatch = useDispatch();
-
+  console.log(MAPS_API_KEY)
 
   useEffect(() => {
     (async () => {
